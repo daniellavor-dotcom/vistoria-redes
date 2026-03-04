@@ -138,7 +138,7 @@
     <div class="card">
         <h3 class="card-title">4. Fatores Críticos</h3>
         <div class="checkbox-group"><input type="checkbox" id="tem_live"><label><b>Transmissão:</b> Haverá Live ou captação por Imprensa.</label></div>
-        <div class="checkbox-group"><input type="checkbox" id="sinal_ruim_4g"><label><b>4G Ruim:</b> A internet móvel das operadoras falha no local.</label></div>
+        <div class="checkbox-group"><input type="checkbox" id="sinal_ruim_4g"><label><b>Rede Móvel Ruim:</b> A internet das operadoras falha no local.</label></div>
         <div class="checkbox-group"><input type="checkbox" id="energia_oscila"><label><b>Energia Instável:</b> Histórico de quedas ou uso de gerador oscilante.</label></div>
         <div class="checkbox-group"><input type="checkbox" id="tem_hotspot"><label><b>Hotspot:</b> Cliente exige portal de login (Captura de Leads).</label></div>
     </div>
@@ -178,7 +178,7 @@
         let longa_distancia = document.getElementById('distancia_100m').checked;
         
         let live = document.getElementById('tem_live').checked;
-        let sinal_4g = document.getElementById('sinal_ruim_4g').checked;
+        let sinal_rede_movel = document.getElementById('sinal_ruim_4g').checked;
         let energia = document.getElementById('energia_oscila').checked;
         let hotspot = document.getElementById('tem_hotspot').checked;
 
@@ -258,7 +258,7 @@
         if (metal && eaps_qtd > 0) alertas.push("OBSTRUÇÃO METÁLICA: O sinal sofre reflexão no metal. Evite instalar os APs muito colados aos Food Trucks ou estruturas do palco.");
         if (!fixacao && eaps_qtd > 0) alertas.push("ABSORÇÃO DE SINAL: Sem fixação no teto, os corpos do público vão bloquear o sinal. Utilize pedestais/tripés para os APs (Mínimo 2.5m).");
         if (live) alertas.push("LIVE DETECTADA: É estritamente proibido rodar a Live via Wi-Fi. Puxe um cabo de rede físico direto para a máquina de transmissão.");
-        if (sinal_4g && eaps_qtd > 0) dicas.push("O 4G ruim fará todo o público migrar para o Wi-Fi. Crie regras no Queue da Mikrotik limitando a banda (Ex: 5 Mega por usuário).");
+        if (sinal_rede_movel && eaps_qtd > 0) dicas.push("A rede móvel ruim fará todo o público migrar para o Wi-Fi. Crie regras no Queue da Mikrotik limitando a banda (Ex: 5 Mega por usuário).");
         if (hotspot && maq > 0) dicas.push("Crie uma rede (SSID) 2.4GHz separada, oculta e SEM hotspot, dedicada exclusivamente para ligar as maquininhas de cartão.");
         if (tipo === "Feira de Negócios") dicas.push("Feiras possuem muita Poluição de RF (roteadores dos stands). Fixe os canais dos EAPs apenas em 5GHz e evite canalização automática.");
         if (gamer && qtd_pcs > 0) dicas.push("Crie uma VLAN exclusiva para a porta do Switch Gamer, separando totalmente o tráfego dos PCs do Wi-Fi do público. Configure regras de QoS para priorizar pacotes ICMP/UDP.");

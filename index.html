@@ -3,68 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Redes - Vistoria</title>
+    <title>Vistoria Técnica - Virtex</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #ffffff; padding: 20px; color: #000000; }
-        .container { max-width: 650px; background: #ffffff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin: auto; border: 2px solid #000000; }
-        .header { text-align: center; border-bottom: 2px solid #e53e3e; padding-bottom: 15px; margin-bottom: 20px; }
-        .logo { max-width: 150px; height: auto; margin-bottom: 10px; }
-        h1 { color: #e53e3e; font-size: 22px; margin: 0; }
-        h3 { color: #000000; margin-top: 20px; border-left: 4px solid #e53e3e; padding-left: 10px; }
-        .form-group { margin-bottom: 12px; }
-        label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px; color: #000000; }
-        input[type="number"], select { width: 100%; padding: 10px; border: 1px solid #000000; border-radius: 5px; box-sizing: border-box; background-color: #ffffff; color: #000000; }
-        .checkbox-group { display: flex; align-items: center; margin-bottom: 10px; background: #f7fafc; padding: 8px; border-radius: 5px; border: 1px solid #edf2f7; }
-        .checkbox-group input { margin-right: 10px; transform: scale(1.2); }
-        button { width: 100%; padding: 15px; background-color: #e53e3e; color: #ffffff; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; }
-        #resultado { margin-top: 25px; padding: 20px; background-color: #ffffff; border-radius: 8px; display: none; border: 2px solid #e53e3e; }
-        .alerta { color: #e53e3e; font-weight: bold; margin-bottom: 8px; list-style: none; }
-        .dica { color: #000000; font-weight: bold; margin-bottom: 8px; list-style: none; }
-        .critico { color: #ffffff; background-color: #e53e3e; padding: 10px; border-radius: 5px; text-align: center; font-weight: bold; margin-bottom: 15px; }
+        /* TEMA VIRTEX: VERMELHO, PRETO E BRANCO */
+        :root {
+            --vermelho-virtex: #E30613; /* Vermelho vibrante */
+            --preto-corpo: #1A1A1A;
+            --cinza-fundo: #F2F2F2;
+            --branco: #FFFFFF;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--cinza-fundo); padding: 15px; margin: 0; color: var(--preto-corpo); }
+        .container { max-width: 600px; background: var(--branco); padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin: auto; border-top: 6px solid var(--vermelho-virtex); }
+        
+        .header { text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #ddd; }
+        .logo { max-width: 200px; height: auto; margin-bottom: 10px; }
+        
+        h1 { color: var(--vermelho-virtex); font-size: 18px; text-transform: uppercase; font-weight: 800; margin: 10px 0; }
+        h3 { color: var(--preto-corpo); font-size: 16px; border-left: 4px solid var(--vermelho-virtex); padding-left: 10px; margin-top: 25px; text-transform: uppercase; }
+
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 5px; color: #444; }
+        input[type="number"], select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; box-sizing: border-box; outline: none; }
+        input:focus { border-color: var(--vermelho-virtex); }
+
+        .checkbox-group { display: flex; align-items: center; background: #fff; padding: 10px; border: 1px solid #eee; border-radius: 4px; margin-bottom: 8px; transition: 0.2s; }
+        .checkbox-group:hover { border-color: var(--vermelho-virtex); }
+        .checkbox-group input { margin-right: 12px; width: 18px; height: 18px; accent-color: var(--vermelho-virtex); }
+
+        button { width: 100%; padding: 16px; background-color: var(--vermelho-virtex); color: var(--branco); border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        button:hover { background-color: #b3050f; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+
+        #resultado { margin-top: 30px; padding: 20px; border-radius: 4px; border: 2px solid var(--vermelho-virtex); display: none; background: #fff; }
+        
+        /* Simulação do Mapa de Calor (Vermelho/Verde/Amarelo) */
+        .mapa-calor { width: 100%; height: 160px; border-radius: 4px; margin: 15px 0; border: 1px solid #ddd;
+            background: radial-gradient(circle at 30% 40%, #28a745 0%, #ffc107 40%, #dc3545 80%),
+                        radial-gradient(circle at 75% 65%, #28a745 0%, #ffc107 45%, #dc3545 85%);
+        }
+
+        ul { padding-left: 20px; list-style: square; }
+        li { margin-bottom: 8px; font-size: 14px; color: #333; }
+        .alerta { color: var(--vermelho-virtex); font-weight: bold; }
+        .dica { color: #28a745; font-weight: bold; }
+        .critico { background: var(--vermelho-virtex); color: white; padding: 10px; border-radius: 4px; text-align: center; font-weight: bold; margin-bottom: 15px; font-size: 14px; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="header">
-        <img src="https://via.placeholder.com/150x50.png?text=Logo+Empresa" alt="Logo da Empresa" class="logo">
-        <h1>📋 Vistoria Técnica e Dimensionamento</h1>
-    </div>
-    
-    <div class="form-group">
-        <label>Público Geral (Conexões):</label>
-        <input type="number" id="publico" value="0">
-    </div>
-    <div class="form-group">
-        <label>Staff / Administrativo:</label>
-        <input type="number" id="staff" value="0">
-    </div>
-    <div class="form-group">
-        <label>Maquininhas de Cartão:</label>
-        <input type="number" id="maquininhas" value="0">
+        <img src="virtex3.e7d19001.png" alt="Virtex Telecom" class="logo" onerror="this.src='https://via.placeholder.com/200x80?text=VIRTEX+TELECOM'">
+        <h1>Vistoria Técnica de Rede</h1>
     </div>
 
     <div class="form-group">
-        <label>Tamanho do Local / Divisórias:</label>
-        <select id="tamanho_local">
-            <option value="pequeno">Pequeno (Sala única, Academia compacta)</option>
-            <option value="medio">Médio ou Bem Reparticionado (Várias salas/paredes)</option>
-            <option value="grande">Grande Porte (Estádio, Praça, Show)</option>
+        <label>Tipo de Evento:</label>
+        <select id="tipo_evento">
+            <option value="Corporativo">Empresarial / Escritórios</option>
+            <option value="Palestra">Palestra / Workshop de Provedores</option>
+            <option value="Evento de Massa">Show / Evento de Grande Porte</option>
+            <option value="Live">Transmissão Crítica (Live/E-sports)</option>
         </select>
     </div>
 
-    <div class="checkbox-group"><input type="checkbox" id="area_aberta"><label>Área Aberta (Exposto ao tempo)?</label></div>
-    <div class="checkbox-group"><input type="checkbox" id="sinal_ruim_4g"><label>Sinal 4G/5G Ruim no local?</label></div>
-    <div class="checkbox-group"><input type="checkbox" id="tem_live"><label>Haverá Live / Transmissão?</label></div>
-    <div class="checkbox-group"><input type="checkbox" id="energia_oscila"><label>Energia instável no local?</label></div>
+    <div class="form-group"><label>Público Estimado (Celulares):</label><input type="number" id="publico" value="0"></div>
+    <div class="form-group"><label>Staff / Equipe (ADM):</label><input type="number" id="staff" value="0"></div>
+    <div class="form-group"><label>Maquininhas de Cartão (POS):</label><input type="number" id="maquininhas" value="0"></div>
 
-    <button onclick="gerarProjeto()">Calcular Projeto</button>
+    <div class="form-group">
+        <label>Características do Local:</label>
+        <select id="tamanho_local">
+            <option value="pequeno">Espaço Único (Até 100m²)</option>
+            <option value="medio">Médio ou Reparticionado (Salas/Paredes)</option>
+            <option value="grande">Grande Área (Ginásio/Estádio/Praça)</option>
+        </select>
+    </div>
+
+    <div class="checkbox-group"><input type="checkbox" id="area_aberta"><label>Área Externa (Exposto ao tempo)</label></div>
+    <div class="checkbox-group"><input type="checkbox" id="tem_live"><label>Haverá Transmissão ao Vivo (Live)</label></div>
+    <div class="checkbox-group"><input type="checkbox" id="sinal_ruim_4g"><label>Sinal 4G/5G Ruim no local</label></div>
+
+    <button onclick="gerarProjeto()">Gerar Dimensionamento</button>
 
     <div id="resultado"></div>
 </div>
 
 <script>
     function gerarProjeto() {
+        let tipo = document.getElementById('tipo_evento').value;
         let pub = parseInt(document.getElementById('publico').value) || 0;
         let stf = parseInt(document.getElementById('staff').value) || 0;
         let maq = parseInt(document.getElementById('maquininhas').value) || 0;
@@ -74,64 +101,34 @@
         let tamanho = document.getElementById('tamanho_local').value;
         let sinal_4g = document.getElementById('sinal_ruim_4g').checked;
         let live = document.getElementById('tem_live').checked;
-        let energia = document.getElementById('energia_oscila').checked;
 
         let eq = []; let alertas = []; let dicas = [];
-        let grande_porte = (total >= 200 || tamanho === "grande");
+        let grande_porte = (total >= 150 || tamanho === "grande");
 
-        // --- LÓGICA DE HARDWARE ATÉ 30 DISPOSITIVOS ---
+        // Regra de Ouro: Até 30 disp. (ONU/Roteador), Acima disso (EAPs/Mikrotik)
         if (total <= 30) {
-            if (tamanho === "medio") {
-                eq.push("01 ONU Wi-Fi AX (Zyxel/ZTE) + 01 Roteador adicional (Devido ao local ser grande ou reparticionado)");
-            } else {
-                eq.push("01 ONU Wi-Fi AX (Zyxel/ZTE) ou 01 Roteador de boa performance");
-            }
-        } 
-        // --- LÓGICA ACIMA DE 30 DISPOSITIVOS (ENTRADA DE EAPs) ---
-        else {
-            // Roteamento/Gerência
-            if (total < 100) {
-                eq.push("01 ONU Bridge + 01 Roteador para Gerência");
-            } else {
-                eq.push("01 ONU Bridge + 01 Mikrotik (RB 750Gr3 ou 760iGS)");
-            }
-
-            // Wi-Fi (EAPs)
-            if (grande_porte) {
-                let cap = area_aberta ? 120 : 100;
-                let qtd = Math.max(3, Math.ceil(total / cap));
-                let modelo = area_aberta ? "EAP 610 Outdoor" : "EAP 620 ou superior Indoor";
-                eq.push(`${qtd}x Access Points ${modelo}`);
-                alertas.push("🛑 PROJETO DE GRANDE PORTE: Requer análise de Mapa de Calor pelo Analista!");
-            } else {
-                if (area_aberta) {
-                    let qtd = Math.max(1, Math.ceil(total / 120));
-                    eq.push(`${qtd}x EAP 610 Outdoor`);
-                } else {
-                    if (total <= 80) eq.push("01x EAP 610 ou 650 Indoor");
-                    else if (total <= 120) eq.push("01x EAP 620 Indoor");
-                    else eq.push("02x EAP 620 Indoor");
-                }
-            }
+            eq.push(tamanho === "medio" ? "01 ONU Wi-Fi AX + 01 Roteador adicional (Devido às paredes)" : "01 ONU Wi-Fi AX ou 01 Roteador Giga");
+        } else {
+            eq.push(total < 100 ? "01 ONU Bridge + 01 Roteador para Gerência" : "01 ONU Bridge + 01 Mikrotik (RB 750Gr3 ou 760iGS)");
+            let cap = area_aberta ? 120 : 80;
+            let qtd = Math.max(grande_porte ? 3 : 1, Math.ceil(total / cap));
+            eq.push(`${qtd}x Access Points ${area_aberta ? 'EAP 610 Outdoor' : 'EAP 620/660 Indoor'}`);
         }
 
-        // --- EXTRAS: ENERGIA E BACKUP ---
-        if (total > 30 || energia || live) eq.push("01 Nobreak (Obrigatório para segurança do evento)");
-        if (sinal_4g && total > 50) eq.push("01 Link Backup (Starlink / 2ª Fibra)");
-
-        // --- DICAS TÉCNICAS ---
-        if (live) dicas.push("Cabo de rede obrigatório para a transmissão.");
-        if (maq > 0) dicas.push("Rede 2.4GHz separada SEM Hotspot para as maquininhas.");
-        if (sinal_4g) alertas.push("Sinal 4G ruim: O Wi-Fi será muito exigido. Configure controle de banda.");
+        if (total > 30 || live) eq.push("01 Nobreak Senoidal (Proteção de rede)");
 
         let resDiv = document.getElementById('resultado');
-        resDiv.innerHTML = (grande_porte ? '<div class="critico">ALTA COMPLEXIDADE / GRANDE PORTE</div>' : '') +
+        resDiv.innerHTML = `<h2 style="font-size: 16px; color: #E30613;">Relatório Técnico: ${tipo}</h2>` +
+            (grande_porte ? '<div class="critico">ALTA COMPLEXIDADE: REQUER MAPA DE CALOR</div>' : '') +
+            '<div class="mapa-calor"></div>' +
             '<h3>Hardware Recomendado:</h3><ul>' + eq.map(i => `<li>${i}</li>`).join('') + '</ul>' +
-            (alertas.length ? '<h3>Alertas:</h3><ul>' + alertas.map(i => `<li class="alerta">${i}</li>`).join('') + '</ul>' : '') +
-            (dicas.length ? '<h3>Dicas:</h3><ul>' + dicas.map(i => `<li class="dica">${i}</li>`).join('') + '</ul>' : '');
+            '<h3>Observações de Campo:</h3><ul>' + 
+            (live ? '<li class="alerta">Live detectada: Cabo físico obrigatório do roteador ao PC.</li>' : '') +
+            (sinal_4g ? '<li class="alerta">Sinal 4G ruim: Público usará Wi-Fi intensamente. Controle de banda ativo!</li>' : '') +
+            (maq > 0 ? '<li class="dica">Maquininhas: Criar SSID 2.4GHz isolado e oculto.</li>' : '') +
+            '</ul>';
         resDiv.style.display = 'block';
     }
 </script>
 </body>
 </html>
-

@@ -63,11 +63,15 @@
         
         .img-anexo { max-width: 100%; max-height: 400px; border-radius: 8px; border: 1px solid var(--cinza-borda); margin-top: 15px; object-fit: contain; }
 
+        /* MÁGICA DE IMPRESSÃO CORRIGIDA / GERAR PDF */
         @media print {
             body { background-color: white; padding: 0; color: black; }
-            .container { box-shadow: none; border: none; max-width: 100%; margin: 0; padding: 0; }
+            .container { box-shadow: none; border: none; max-width: 100%; margin: 0; padding: 0; border-top: none; }
             #formulario_perguntas, button { display: none !important; }
-            #resultado { border: none; display: block; page-break-inside: avoid; }
+            #resultado { border: none; display: block; }
+            /* Aplica a quebra segura apenas nos blocos menores, não no relatório inteiro */
+            .secao-res, .critico, .img-anexo { page-break-inside: avoid; }
+            h2, h3 { page-break-after: avoid; }
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         }
     </style>
@@ -380,10 +384,10 @@
             <h2 style="color: var(--vermelho-virtex); font-size: 20px; text-transform: uppercase; margin-top: 0; border-bottom: 2px solid var(--vermelho-virtex); padding-bottom: 10px;">📋 Laudo Técnico de Vistoria</h2>
             
             <div class="secao-res" style="background: #fdfdfd; border: 1px solid #eee; padding: 15px; border-radius: 6px;">
-                <p style="margin: 0 0 8px 0;"><b>Cliente / Evento:</b> ${evt}   |   <b>Cidade:</b> ${cidade}</p>
+                <p style="margin: 0 0 8px 0;"><b>Cliente / Evento:</b> ${evt} &nbsp;&nbsp;|&nbsp;&nbsp; <b>Cidade:</b> ${cidade}</p>
                 <p style="margin: 0 0 8px 0;"><b>Localização GPS:</b> ${htmlLocal}</p>
                 <p style="margin: 0 0 8px 0;"><b>Técnico Responsável:</b> ${tec}</p>
-                <p style="margin: 0 0 8px 0;"><b>Data da Vistoria:</b> ${dVist}   |   <b>Data do Evento:</b> ${dEvt}</p>
+                <p style="margin: 0 0 8px 0;"><b>Data da Vistoria:</b> ${dVist} &nbsp;&nbsp;|&nbsp;&nbsp; <b>Data do Evento:</b> ${dEvt}</p>
                 <hr style="border: 0; border-top: 1px dashed #ccc; margin: 12px 0;">
                 <p style="margin: 0 0 8px 0;"><b>Tipo de Evento:</b> ${tipo}</p>
                 <p style="margin: 0 0 8px 0;"><b>Conexões Estimadas:</b> ${total} dispositivos (Público + Staff + POS)</p>

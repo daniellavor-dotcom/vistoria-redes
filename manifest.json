@@ -1,7 +1,7 @@
 {
   "name": "Laudo Técnico Virtex",
   "short_name": "Laudo Virtex",
-  "start_url": "./index.html",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#E30613",
@@ -9,12 +9,14 @@
     {
       "src": "virtex3.e7d19001.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "virtex3.e7d19001.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
